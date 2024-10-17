@@ -1,10 +1,11 @@
 import random
+from art import logo
 
 #stores the levels of the game. 
 levels = {
     "e":5,
     "i":10,
-    "h":5
+    "h":15
 }
 
 # checks to see if user input is numerical.
@@ -15,24 +16,39 @@ def check_num(prompt):
         except ValueError:
             print("Invalid Input. Please select a number next time.")
 
-def check_level(prompt):
+def check_level():
     while True:
-        try: 
-            return input(prompt) in levels
-        except ValueError:
-            print("incorrect")
-            
+        difficulty = input("Choose a difficulty: Type 'e' for easy, 'i' for intermediate, 'h' for hard: ")
+        if difficulty not in levels: 
+            print("Invalid Selection. Please make an appropriate selection from the given choices.")
+        else: 
+            return difficulty          
 
-check_level("--->")
+def start():
 
-def start(): 
+    print(logo)
+
     print("Welcome to the number guesing game!!\n")
 
     user_num = check_num("What would you like the upper range of your game to be?: \n"
               "Ex. If input is '100' then the number will range from 1 to 100.\n" 
               "---> ")
     print(f"I am thinking of a number between 1 and {user_num}")
-    difficulty = input("Choose a difficulty: Type 'e' for easy, 'i' for intermediate, 'h' for hard")
+    rand_num = random.randrange(user_num)
+    print(rand_num)
+    user_level = levels[check_level()]
+    while user_level != 0:
+        user_guess = int(input("Make a guess: "))
+        if user_guess > rand_num:
+            print("Too High") 
+            user_level -= 1
+            print(user_level)
+        elif user_guess < rand_num:
+            print("Too Low")
+            user_level -= 1
+        elif user_guess == rand_num:
+            print("You have guessed correctly!!!")
+start()
     
     
     
