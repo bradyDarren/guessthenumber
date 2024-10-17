@@ -16,6 +16,7 @@ def check_num(prompt):
         except ValueError:
             print("Invalid Input. Please select a number next time.")
 
+# checks to see if user input is within the provided selections. 
 def check_level():
     while True:
         difficulty = input("Choose a difficulty: Type 'e' for easy, 'i' for intermediate, 'h' for hard: ")
@@ -25,7 +26,6 @@ def check_level():
             return difficulty          
 
 def start():
-
     print(logo)
 
     print("Welcome to the number guesing game!!\n")
@@ -35,10 +35,10 @@ def start():
               "---> ")
     print(f"I am thinking of a number between 1 and {user_num}")
     rand_num = random.randrange(user_num)
-    print(rand_num)
+    # print(rand_num) - test line
     user_level = levels[check_level()]
     while user_level != 0:
-        user_guess = int(input("Make a guess: "))
+        user_guess = check_num("Make a guess: ")
         if user_guess > rand_num:
             print("Too High") 
             user_level -= 1
@@ -48,6 +48,9 @@ def start():
             user_level -= 1
         elif user_guess == rand_num:
             print("You have guessed correctly!!!")
+    
+    if user_level == 0:
+        print("You lose. No guesses are remaining.")
 start()
     
     
