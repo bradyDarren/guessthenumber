@@ -18,9 +18,10 @@ def check_num(prompt):
 def check_level(prompt):
     while True:
         try: 
-            input(prompt) not in levels
+            return input(prompt) in levels
         except ValueError:
-            print("Invalid Input. Please select a value from the given criteria.")
+            print("incorrect")
+            
 
 check_level("--->")
 
