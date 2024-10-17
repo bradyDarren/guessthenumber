@@ -3,9 +3,9 @@ from art import logo
 
 #stores the levels of the game. 
 levels = {
-    "e":5,
-    "i":10,
-    "h":15
+    "e":12,
+    "i":8,
+    "h":4
 }
 
 # checks to see if user input is numerical.
@@ -35,21 +35,22 @@ def start():
               "---> ")
     print(f"I am thinking of a number between 1 and {user_num}")
     rand_num = random.randrange(user_num)
-    # print(rand_num) - test line
+    print(rand_num)
     user_level = levels[check_level()]
-    while user_level != 0:
+    remaining_turns = user_level
+    while remaining_turns != 0:
         user_guess = check_num("Make a guess: ")
         if user_guess > rand_num:
             print("Too High") 
-            user_level -= 1
-            print(user_level)
+            remaining_turns -= 1
+            print(remaining_turns)
         elif user_guess < rand_num:
             print("Too Low")
-            user_level -= 1
+            remaining_turns -= 1
         elif user_guess == rand_num:
             print("You have guessed correctly!!!")
     
-    if user_level == 0:
+    if remaining_turns == 0:
         print("You lose. No guesses are remaining.")
 start()
     
