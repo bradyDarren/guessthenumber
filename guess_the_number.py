@@ -35,7 +35,7 @@ def start():
               "---> ")
     print(f"I am thinking of a number between 1 and {user_num}")
     rand_num = random.randrange(user_num)
-    print(rand_num)
+    # print(rand_num) - test line
     user_level = levels[check_level()]
     remaining_turns = user_level
     while remaining_turns != 0:
@@ -43,12 +43,14 @@ def start():
         if user_guess > rand_num:
             print("Too High") 
             remaining_turns -= 1
-            print(remaining_turns)
+            # print(remaining_turns) - test line
         elif user_guess < rand_num:
             print("Too Low")
             remaining_turns -= 1
+            # print(remaining_turns) - test line
         elif user_guess == rand_num:
             print("You have guessed correctly!!!")
+            break
     
     if remaining_turns == 0:
         print("You lose. No guesses are remaining.")
