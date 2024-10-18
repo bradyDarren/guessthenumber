@@ -56,5 +56,3 @@ def start():
         print("You lose. No guesses are remaining.")
 start()
     
-    
-    
